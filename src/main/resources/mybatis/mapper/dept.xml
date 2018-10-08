@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.adu.mybatis.springboot.mapper.DepartmentMapper">
+    <select id="getById02" parameterType="int" resultType="com.adu.mybatis.springboot.pojo.DepartmentPojo">
+        select * from department where id=#{id}
+    </select>
+    
+    <insert id="insertDept02" parameterType="com.adu.mybatis.springboot.pojo.DepartmentPojo">
+        <selectKey keyProperty="id" resultType="int" order="AFTER">
+            select LAST_INSERT_ID();
+        </selectKey>
+        insert into department(name) values(#{name})
+    </insert>
+</mapper>
